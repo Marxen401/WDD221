@@ -1,0 +1,253 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Name: Ethan Marxen -->
+    <!-- Date: February 2, 2026 -->
+    <!-- Assignment: Dog Years Calculator -->
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dog Years Calculator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet" />
+    <style>
+        :root {
+            --cream: #fdf6ec;
+            --brown-dark: #3b2a1a;
+            --brown-mid: #7a5c3a;
+            --brown-light: #c4a882;
+            --green: #5a9a6e;
+            --green-light: #a3d4b1;
+            --peach: #f0c9a0;
+            --peach-light: #fde8d0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background-color: var(--cream);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+            /* Subtle paw print background */
+            body::before {
+                content: '';
+                position: fixed;
+                inset: 0;
+                background-image: radial-gradient(circle 6px at 30px 30px, var(--brown-light) 100%, transparent 100%), radial-gradient(circle 4px at 18px 16px, var(--brown-light) 100%, transparent 100%), radial-gradient(circle 4px at 42px 16px, var(--brown-light) 100%, transparent 100%), radial-gradient(circle 4px at 10px 26px, var(--brown-light) 100%, transparent 100%), radial-gradient(circle 4px at 50px 26px, var(--brown-light) 100%, transparent 100%);
+                background-size: 120px 100px;
+                opacity: 0.06;
+                pointer-events: none;
+                z-index: 0;
+            }
+
+        .card {
+            position: relative;
+            z-index: 1;
+            background: white;
+            border-radius: 28px;
+            box-shadow: 0 12px 40px rgba(59, 42, 26, 0.12);
+            max-width: 460px;
+            width: 100%;
+            padding: 48px 36px 36px;
+            border: 3px solid var(--peach-light);
+        }
+
+        /* Dog face badge */
+        .dog-face {
+            width: 100px;
+            height: 100px;
+            margin: -90px auto 16px;
+            background: var(--peach);
+            border-radius: 50%;
+            border: 4px solid white;
+            box-shadow: 0 4px 12px rgba(59,42,26,0.15);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+            .dog-face svg {
+                width: 68px;
+                height: 68px;
+            }
+
+        .ear {
+            position: absolute;
+            width: 32px;
+            height: 44px;
+            background: var(--brown-mid);
+            border-radius: 50%;
+        }
+
+            .ear.left {
+                left: -14px;
+                top: 12px;
+                transform: rotate(-15deg);
+            }
+
+            .ear.right {
+                right: -14px;
+                top: 12px;
+                transform: rotate(15deg);
+            }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--brown-dark);
+            text-align: center;
+            margin-bottom: 4px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: var(--brown-mid);
+            font-size: 0.92rem;
+            margin-bottom: 24px;
+            font-weight: 600;
+        }
+
+        /* Divider */
+        .divider {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 24px;
+        }
+
+            .divider::before, .divider::after {
+                content: '';
+                flex: 1;
+                height: 2px;
+                background: linear-gradient(to right, transparent, var(--brown-light), transparent);
+            }
+
+            .divider span {
+                font-size: 1.2rem;
+            }
+
+        /* Conversion rules pills */
+        .rules {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 24px;
+        }
+
+        .pill {
+            flex: 1;
+            background: var(--peach-light);
+            border-radius: 12px;
+            padding: 10px 8px;
+            text-align: center;
+        }
+
+            .pill .label {
+                font-size: 0.7rem;
+                text-transform: uppercase;
+                letter-spacing: 0.06em;
+                color: var(--brown-mid);
+                font-weight: 700;
+            }
+
+            .pill .value {
+                font-family: 'Playfair Display', serif;
+                font-size: 1.05rem;
+                color: var(--brown-dark);
+                font-weight: 700;
+            }
+
+        /* Output box */
+        .output-box {
+            background: linear-gradient(135deg, var(--green-light), var(--peach-light));
+            border-radius: 18px;
+            padding: 24px;
+            text-align: center;
+            min-height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #output {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            color: var(--brown-dark);
+            font-weight: 700;
+            line-height: 1.4;
+        }
+
+        .footer-note {
+            text-align: center;
+            margin-top: 16px;
+            font-size: 0.78rem;
+            color: var(--brown-light);
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+
+        <!-- Dog face badge -->
+        <div class="dog-face">
+            <div class="ear left"></div>
+            <div class="ear right"></div>
+            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <ellipse cx="32" cy="34" rx="22" ry="20" fill="#f0c9a0" />
+                <ellipse cx="32" cy="42" rx="10" ry="7" fill="#fde8d0" />
+                <ellipse cx="32" cy="40" rx="4" ry="2.5" fill="#3b2a1a" />
+                <circle cx="24" cy="32" r="3" fill="#3b2a1a" />
+                <circle cx="40" cy="32" r="3" fill="#3b2a1a" />
+                <circle cx="25" cy="31" r="1" fill="white" />
+                <circle cx="41" cy="31" r="1" fill="white" />
+                <path d="M20 27 Q24 25 28 27" stroke="#7a5c3a" stroke-width="1.8" fill="none" stroke-linecap="round" />
+                <path d="M36 27 Q40 25 44 27" stroke="#7a5c3a" stroke-width="1.8" fill="none" stroke-linecap="round" />
+                <ellipse cx="32" cy="45" rx="3" ry="3.5" fill="#e8788a" />
+                <path d="M29 42 Q32 44 35 42" stroke="#3b2a1a" stroke-width="1" fill="none" />
+            </svg>
+        </div>
+
+        <h1>Dog Years Calculator</h1>
+        <p class="subtitle">Find out how old you are in dog years!</p>
+
+        <div class="divider"><span>🐾</span></div>
+
+        <!-- Conversion rule pills showing the two rules -->
+        <div class="rules">
+            <div class="pill">
+                <div class="label">First 2 Years</div>
+                <div class="value">× 10.5 each</div>
+            </div>
+            <div class="pill">
+                <div class="label">Years After That</div>
+                <div class="value">× 4 each</div>
+            </div>
+        </div>
+
+        <!-- This is the element that dogYears.js writes to in step 10 -->
+        <div class="output-box">
+            <div id="output">Loading...</div>
+        </div>
+
+        <p class="footer-note">Result is calculated by dogYears.js</p>
+    </div>
+
+    <!-- External JS file linked AFTER the HTML so the #output element exists when it runs -->
+    <script src="js/dogyears.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <!--
+      JavaScript ~ WDD221
+      Web Site for a fictional company ~ Tinley Xeriscapes
+      Plants web page
+      Author: 
+      Date:   
+   -->
+   <meta charset="utf-8" />
+   <meta name="viewport" content="width=device-width,initial-scale=1.0">
+   <title>Tinley Xeriscapes</title>
+   <link rel="stylesheet" media="screen and (max-device-width: 999px)" href="css/tinleyhand.css">
+   <link rel="stylesheet" media="screen and (min-device-width: 1000px)" href="css/tinley.css">
+   <!--[if lt IE 9]>
+      <link rel="stylesheet" href="css/tinley.css" />
+   <![endif]-->
+   <link href='http://fonts.googleapis.com/css?family=Lily+Script+One' rel='stylesheet' type='text/css'>
+   <script src="js/modernizr.custom.05819.js"></script>
+</head>
+
+<body>
+   <div id="container">
+      <header>
+         <h1>
+            <img src="images/flower.png" width="132" height="120" alt="Tinley Xeriscapes" title="" id="logo1">
+            <img src="images/flower.png" width="132" height="120" alt="Tinley Xeriscapes" title="" id="logo2">
+            <img src="images/txlogo.png" width="132" height="120" alt="Tinley Xeriscapes" title="" id="logo3">
+            tinley xeriscapes
+         </h1>
+      </header>
+
+      <nav>
+         <ul>
+            <li><a href="#">About Xeriscaping</a></li>
+            <li id="currentpage"><a href="#">Plants</a></li>
+            <li><a href="#">See Our Work</a></li>
+            <li><a href="#">Get An Estimate</a></li>
+         </ul>
+      </nav>
+        
+      <aside>
+	  <!--add event handlers to the li elements containing plant names.  When a user's mouse pointer clicks
+	  one of these li elements the src value of the img element with the id value plantImg will change
+	  to display the image of the plant.-->
+         <ul>
+            <li onclick="document.getElementById('plantImg').src = blanket">Blanket Flower</li>
+            <li onclick="document.getElementById('plantImg').src = rugosa">Hedge Rose</li>
+            <li onclick="document.getElementById('plantImg').src = bluestem">Little Bluestem</li>
+         </ul>
+      </aside>
+    
+	<!--this is the area that will display a plant image once the plant link is clicked by the user, 
+	the getElementById method is calling this id attribute-->
+      <article>
+         <figure>
+            <img src="#" width="640" height="400" alt="" title="" id="plantImg"/>
+            <figcaption>
+               <script>
+                  /*
+                     Information on available plants
+                     including link to USDA website
+                  */
+                  document.write("<p>Plant choices for <a href='http://planthardiness.ars.usda.gov'>hardiness zones</a> 5a-6b</p>");// hardiness zones for Chicago and surrounding area
+               </script>
+            </figcaption>
+         </figure>
+      </article>
+    
+      <footer>
+         <p>Tinley Xeriscapes &bull; Tinley Park, IL 60477</p>
+      </footer>
+   </div>
+   <script src="js/plants.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

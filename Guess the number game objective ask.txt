@@ -1,0 +1,27 @@
+//Guess the number game objective: ask the player for a number and compare the entered number to the random generated number
+
+let number = Math.round(Math.random() * 100 + 1); // restricts for whole numbers and no 0 (zero)
+
+//go ahead and test this line of code in your console
+
+let guess = ""; // create a variable to store the user's guess and initial it to an empty string
+
+while (guess != number) { // while loop with as condition - not equal to
+
+    guess = prompt(" Guess a number between 1 and 100: ");
+    
+    // incorporate the loop structure
+    
+    // incorporate conditional statements - AKA boolean logic
+    
+    if ( guess > number)
+        alert("Too high");
+    else if ( guess < number)
+        alert("Too low");
+    else
+        alert("Correct! You win!");
+}
+
+// Challenge #2 solution - celebrate the winner
+let userName = prompt("What is your name?");
+alert(userName + ", you are a winner! Yoda wins! Yoda wins! Yoda wins! Yoda wins! Yoda wins! Yoda wins! Yoda wins! Yoda wins! Yoda wins! Yoda wins!");
