@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Part 2: Temperature Conversion Tool</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🌡️ Temperature Converter</h1>
+        <p class="subtitle">Fahrenheit to Celsius</p>
+        
+        <div class="converter-box">
+            <div class="input-group">
+                <label for="fahrenheit">Enter Temperature in Fahrenheit (°F):</label>
+                <input type="number" id="fahrenheit" placeholder="e.g., 72" step="0.1">
+            </div>
+            
+            <button id="convertBtn" onclick="convertTemperature()">Convert to Celsius</button>
+            
+            <div id="result" class="result"></div>
+        </div>
+        
+        <div class="info">
+            <h3>Conversion Formula:</h3>
+            <p>°C = (°F - 32) × 5/9</p>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
