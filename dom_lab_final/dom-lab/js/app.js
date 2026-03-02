@@ -1,3 +1,4 @@
+// Ethan Marxen 03/02/26
 // load the contents of the webpage
 document.addEventListener('DOMContentLoaded', function()
 {
