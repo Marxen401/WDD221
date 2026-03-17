@@ -1,3 +1,4 @@
+//Ethan Marxen 03/16/2026
 // 1: Select / (get) the element with the ID 'about'. 
 //    Store the element in the variable `about`.
 //	  Use a method to modify the about id with a color border of your choice
