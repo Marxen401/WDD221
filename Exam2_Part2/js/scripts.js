@@ -61,7 +61,7 @@ jumbotron.style.backgroundColor = "#1a73e8";
 // PART 2: Interactive Sum Program
 // -------------------------------------------------------
 
-function sumInput() { //create a function
+function sumInput() {
   let numbers = []; //creates an array
 
   // Ask the user for their name
@@ -89,14 +89,19 @@ function sumInput() { //create a function
     numbersList += '<li>' + numbers[i] + '</li>';
   }
 
-  // Display the name, entered values, and sum on the webpage instead of an alert box
-  document.getElementById('results').innerHTML =
+  // Display results on the webpage instead of an alert box
+  const results = document.getElementById('results');
+  results.innerHTML =
     '<h4>Results for ' + userName + '</h4>' +
     '<p><strong>Numbers entered:</strong></p>' +
     '<ul>' + (numbersList !== '' ? numbersList : '<li>No numbers entered.</li>') + '</ul>' +
     '<p><strong>Total Sum: ' + sum + '</strong></p>';
 
+  // Scroll results into view so the user does not miss them
+  results.scrollIntoView({ behavior: 'smooth' });
+
   return sum;
 }
 
-sumInput(); //call the function
+// Delay the prompts by 500ms so the page fully renders and styles show first
+setTimeout(sumInput, 500);
