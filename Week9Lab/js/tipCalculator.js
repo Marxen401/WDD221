@@ -1,4 +1,4 @@
-//Calculate Tip
+//Calculate Tip Ethan Marxen 3/23/2026
 function calculateTip()
 {
    const billAmt = document.getElementById("billamt").value;
