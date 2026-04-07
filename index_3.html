@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- EM - Week 11 - jQuery Instructional Page -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Why jQuery? | A Developer's Guide</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --ink:    #0e0e0e;
+            --paper:  #f5f0e8;
+            --cream:  #ede7d5;
+            --accent: #c94a1a;
+            --muted:  #7a7060;
+            --code-bg:#1e1c18;
+            --code-fg:#f0c070;
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            background: var(--paper);
+            color: var(--ink);
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 300;
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* ── HEADER ── */
+        header {
+            background: var(--ink);
+            color: var(--paper);
+            padding: 80px 40px 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: -60px; right: -60px;
+            width: 320px; height: 320px;
+            border-radius: 50%;
+            border: 2px solid var(--accent);
+            opacity: .25;
+        }
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: -80px; left: 20px;
+            width: 200px; height: 200px;
+            border-radius: 50%;
+            border: 1px solid var(--paper);
+            opacity: .08;
+        }
+
+        .header-inner {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .kicker {
+            font-family: 'DM Mono', monospace;
+            font-size: .75rem;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 18px;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.4rem, 6vw, 4.5rem);
+            line-height: 1.08;
+            font-weight: 900;
+            margin-bottom: 22px;
+        }
+
+        h1 em {
+            font-style: italic;
+            color: var(--accent);
+        }
+
+        .header-sub {
+            font-size: 1.1rem;
+            color: #b8b0a0;
+            max-width: 540px;
+        }
+
+        /* ── NAV STRIP ── */
+        .nav-strip {
+            background: var(--accent);
+            padding: 14px 40px;
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-strip a {
+            font-family: 'DM Mono', monospace;
+            font-size: .78rem;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            color: var(--paper);
+            text-decoration: none;
+            opacity: .85;
+            transition: opacity .2s;
+        }
+        .nav-strip a:hover { opacity: 1; text-decoration: underline; }
+
+        /* ── MAIN ── */
+        main {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px 40px 100px;
+        }
+
+        /* ── SECTIONS ── */
+        section { margin-bottom: 70px; }
+
+        .section-label {
+            font-family: 'DM Mono', monospace;
+            font-size: .7rem;
+            letter-spacing: .2em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+            font-weight: 700;
+            margin-bottom: 18px;
+            line-height: 1.2;
+        }
+
+        p { margin-bottom: 16px; color: #2a2620; }
+
+        /* ── BENEFIT CARDS ── */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+            margin-top: 28px;
+        }
+
+        .benefit-card {
+            background: var(--cream);
+            border-left: 4px solid var(--accent);
+            padding: 24px 22px;
+            border-radius: 0 6px 6px 0;
+        }
+
+        .benefit-card .icon {
+            font-size: 1.6rem;
+            margin-bottom: 10px;
+        }
+
+        .benefit-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+        }
+
+        .benefit-card p {
+            font-size: .9rem;
+            color: var(--muted);
+            margin: 0;
+        }
+
+        /* ── CODE BLOCK ── */
+        .code-block {
+            background: var(--code-bg);
+            color: var(--code-fg);
+            font-family: 'DM Mono', monospace;
+            font-size: .85rem;
+            padding: 24px 28px;
+            border-radius: 8px;
+            margin: 20px 0;
+            overflow-x: auto;
+            line-height: 1.8;
+        }
+
+        .code-block .comment { color: #6a6050; }
+        .code-block .keyword { color: #e06050; }
+        .code-block .string  { color: #80c080; }
+
+        /* ── DEMO BOXES ── */
+        .demo-wrapper {
+            background: var(--cream);
+            border: 1px solid #d8d0bc;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 28px;
+        }
+
+        .demo-label {
+            background: var(--ink);
+            color: var(--paper);
+            font-family: 'DM Mono', monospace;
+            font-size: .72rem;
+            letter-spacing: .15em;
+            text-transform: uppercase;
+            padding: 10px 20px;
+        }
+
+        .demo-inner {
+            padding: 36px 32px;
+        }
+
+        /* Demo 1 – Toggle */
+        #toggleBtn {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 12px 28px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: .95rem;
+            border-radius: 4px;
+            cursor: pointer;
+            letter-spacing: .04em;
+            transition: background .2s, transform .1s;
+        }
+
+        #toggleBtn:hover  { background: #a33a12; }
+        #toggleBtn:active { transform: scale(.97); }
+
+        #toggleContent {
+            margin-top: 22px;
+            background: white;
+            border-left: 4px solid var(--accent);
+            padding: 20px 22px;
+            border-radius: 0 6px 6px 0;
+            font-size: .95rem;
+        }
+
+        #toggleContent strong {
+            display: block;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            margin-bottom: 6px;
+        }
+
+        /* Demo 2 – Fade Flash Message */
+        #flashTrigger {
+            background: transparent;
+            color: var(--accent);
+            border: 2px solid var(--accent);
+            padding: 12px 28px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: .95rem;
+            border-radius: 4px;
+            cursor: pointer;
+            letter-spacing: .04em;
+            transition: background .2s, color .2s;
+        }
+
+        #flashTrigger:hover { background: var(--accent); color: white; }
+
+        #flashMsg {
+            display: none;
+            margin-top: 22px;
+            background: #2d6a4f;
+            color: white;
+            padding: 16px 22px;
+            border-radius: 6px;
+            font-size: .95rem;
+        }
+
+        /* Demo 3 – Accordion */
+        .accordion-item {
+            border-bottom: 1px solid #d0c8b4;
+        }
+
+        .accordion-item:first-child { border-top: 1px solid #d0c8b4; }
+
+        .accordion-q {
+            width: 100%;
+            background: none;
+            border: none;
+            text-align: left;
+            padding: 18px 0;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--ink);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .accordion-q .arrow {
+            font-size: .8rem;
+            color: var(--accent);
+            transition: transform .3s;
+            flex-shrink: 0;
+        }
+
+        .accordion-q.open .arrow { transform: rotate(180deg); }
+
+        .accordion-a {
+            display: none;
+            padding: 0 0 18px;
+            font-size: .93rem;
+            color: var(--muted);
+            line-height: 1.7;
+        }
+
+        /* ── COMPARISON TABLE ── */
+        .compare-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 24px;
+            font-size: .9rem;
+        }
+
+        .compare-table th {
+            background: var(--ink);
+            color: var(--paper);
+            font-family: 'DM Mono', monospace;
+            font-weight: 400;
+            letter-spacing: .06em;
+            padding: 12px 16px;
+            text-align: left;
+        }
+
+        .compare-table td {
+            padding: 12px 16px;
+            border-bottom: 1px solid #ddd6c4;
+            vertical-align: top;
+        }
+
+        .compare-table tr:nth-child(even) td { background: var(--cream); }
+
+        .compare-table .yes { color: #2d6a4f; font-weight: 500; }
+        .compare-table .no  { color: #c94a1a; font-weight: 500; }
+
+        /* ── FOOTER ── */
+        footer {
+            background: var(--ink);
+            color: #7a7060;
+            text-align: center;
+            padding: 36px 20px;
+            font-family: 'DM Mono', monospace;
+            font-size: .75rem;
+            letter-spacing: .08em;
+        }
+
+        footer span { color: var(--accent); }
+
+        /* ── DIVIDER ── */
+        .rule {
+            border: none;
+            height: 1px;
+            background: linear-gradient(to right, var(--accent), transparent);
+            margin: 50px 0;
+        }
+
+        /* ── SCROLL FADE IN (jQuery) ── */
+        .fade-section { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
+        .fade-section.visible { opacity: 1; transform: none; }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="header-inner">
+            <p class="kicker">WDD 226 &nbsp;·&nbsp; Week 11 &nbsp;·&nbsp; jQuery</p>
+            <h1>Write Less,<br><em>Do More.</em></h1>
+            <p class="header-sub">An introduction to jQuery — what it is, why it matters, and how it makes web interactivity dramatically easier.</p>
+        </div>
+    </header>
+
+    <!-- NAV -->
+    <nav class="nav-strip">
+        <a href="#what">What is jQuery</a>
+        <a href="#benefits">Benefits</a>
+        <a href="#demo1">Demo: Toggle</a>
+        <a href="#demo2">Demo: Flash Message</a>
+        <a href="#demo3">Demo: Accordion</a>
+        <a href="#compare">JS vs jQuery</a>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <main>
+
+        <!-- WHAT IS JQUERY -->
+        <section id="what" class="fade-section">
+            <p class="section-label">01 — Overview</p>
+            <h2>What is jQuery?</h2>
+            <p>jQuery is a fast, lightweight JavaScript library first released in 2006. Its core philosophy is simple: <strong>"Write less, do more."</strong> It wraps complex JavaScript operations into short, readable commands that work consistently across every major browser.</p>
+            <p>Rather than writing several lines of vanilla JavaScript to select elements, add event listeners, or animate content, jQuery lets you accomplish the same thing in a single line. It has been used on millions of websites and remains one of the most widely deployed JavaScript libraries in the world.</p>
+
+            <div class="code-block">
+<span class="comment">// Including jQuery via CDN — paste just above your closing &lt;/body&gt; tag</span>
+&lt;<span class="keyword">script</span> src=<span class="string">"https://code.jquery.com/jquery-3.7.1.min.js"</span>&gt;&lt;/<span class="keyword">script</span>&gt;
+
+<span class="comment">// Basic jQuery syntax</span>
+$(<span class="string">'selector'</span>).action();
+            </div>
+        </section>
+
+        <hr class="rule">
+
+        <!-- BENEFITS -->
+        <section id="benefits" class="fade-section">
+            <p class="section-label">02 — Why Use It</p>
+            <h2>The Benefits of jQuery</h2>
+            <p>jQuery solves several real problems that come up every time a developer builds an interactive webpage. Here are the biggest reasons developers reach for it:</p>
+
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="icon">⚡</div>
+                    <h3>Less Code</h3>
+                    <p>What takes 5–10 lines of JavaScript often takes just 1–2 lines with jQuery, reducing development time and the chance of bugs.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="icon">🌐</div>
+                    <h3>Cross-Browser Support</h3>
+                    <p>jQuery automatically handles differences between Chrome, Firefox, Safari, and Edge so your code behaves the same everywhere.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="icon">🎬</div>
+                    <h3>Built-in Animations</h3>
+                    <p>Methods like <code>.fadeIn()</code>, <code>.slideDown()</code>, and <code>.animate()</code> make smooth UI effects trivial to implement.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="icon">🔗</div>
+                    <h3>Method Chaining</h3>
+                    <p>Chain multiple actions on the same element in a single readable statement, reducing repetition and improving code clarity.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="icon">📦</div>
+                    <h3>Huge Ecosystem</h3>
+                    <p>Thousands of jQuery plugins exist for sliders, date pickers, form validation, and more — all ready to drop in.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="icon">📖</div>
+                    <h3>Readable Syntax</h3>
+                    <p>Even developers new to JavaScript can read jQuery code and understand what it's doing at a glance.</p>
+                </div>
+            </div>
+        </section>
+
+        <hr class="rule">
+
+        <!-- DEMO 1: TOGGLE -->
+        <section id="demo1" class="fade-section">
+            <p class="section-label">03 — Demonstration One</p>
+            <h2>Technique: Show / Hide Toggle</h2>
+            <p>One of jQuery's most common uses is toggling content visibility on a button click. jQuery's <code>.toggle()</code> method automatically checks whether the element is currently shown or hidden, and flips it — no <code>if/else</code> needed.</p>
+
+            <div class="code-block">
+<span class="comment">// One line does the work of a full if/else block</span>
+$(<span class="string">'#toggleBtn'</span>).click(<span class="keyword">function</span>() {
+    $(<span class="string">'#toggleContent'</span>).toggle(<span class="string">400</span>);  <span class="comment">// 400ms animation speed</span>
+});
+            </div>
+
+            <div class="demo-wrapper">
+                <div class="demo-label">▶ Live Demo — Click the button</div>
+                <div class="demo-inner">
+                    <button id="toggleBtn">Show / Hide Info</button>
+                    <div id="toggleContent">
+                        <strong>jQuery Toggle in Action</strong>
+                        This content was revealed using <code>$('#toggleContent').toggle(400)</code>. Click the button again and it smoothly hides. That single method replaces what would otherwise require checking <code>display</code> states and writing separate show/hide functions in vanilla JavaScript.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <hr class="rule">
+
+        <!-- DEMO 2: FLASH MESSAGE -->
+        <section id="demo2" class="fade-section">
+            <p class="section-label">04 — Demonstration Two</p>
+            <h2>Technique: Animated Flash Message</h2>
+            <p>A flash message appears temporarily to confirm an action — like saving a form — then slides back out. jQuery's <strong>method chaining</strong> makes this a single elegant statement by linking <code>.slideDown()</code>, <code>.delay()</code>, and <code>.slideUp()</code> together.</p>
+
+            <div class="code-block">
+<span class="comment">// Method chaining: three actions, one statement</span>
+$(<span class="string">'#flashTrigger'</span>).click(<span class="keyword">function</span>() {
+    $(<span class="string">'#flashMsg'</span>)
+        .slideDown(<span class="string">600</span>)    <span class="comment">// animate open over 600ms</span>
+        .delay(<span class="string">2500</span>)     <span class="comment">// wait 2.5 seconds</span>
+        .slideUp(<span class="string">600</span>);    <span class="comment">// animate closed over 600ms</span>
+});
+            </div>
+
+            <div class="demo-wrapper">
+                <div class="demo-label">▶ Live Demo — Trigger the message</div>
+                <div class="demo-inner">
+                    <button id="flashTrigger">Save Changes</button>
+                    <div id="flashMsg">✓ &nbsp; Your changes have been saved successfully!</div>
+                </div>
+            </div>
+        </section>
+
+        <hr class="rule">
+
+        <!-- DEMO 3: ACCORDION -->
+        <section id="demo3" class="fade-section">
+            <p class="section-label">05 — Demonstration Three</p>
+            <h2>Technique: Accordion FAQ</h2>
+            <p>An accordion lets users expand and collapse content panels. This pattern appears everywhere — FAQs, navigation menus, product details. jQuery's <code>.slideToggle()</code> handles the animation while class toggling updates the arrow indicator.</p>
+
+            <div class="code-block">
+<span class="comment">// Accordion: toggle answer + rotate arrow indicator</span>
+$(<span class="string">'.accordion-q'</span>).click(<span class="keyword">function</span>() {
+    $(this).toggleClass(<span class="string">'open'</span>);
+    $(this).next(<span class="string">'.accordion-a'</span>).slideToggle(<span class="string">300</span>);
+});
+            </div>
+
+            <div class="demo-wrapper">
+                <div class="demo-label">▶ Live Demo — Click a question</div>
+                <div class="demo-inner">
+                    <div class="accordion-item">
+                        <button class="accordion-q">Is jQuery still relevant today? <span class="arrow">▼</span></button>
+                        <div class="accordion-a">Absolutely. jQuery powers over 77% of the top 10 million websites. While modern frameworks like React and Vue handle complex apps, jQuery remains the fastest way to add interactivity to straightforward websites without a build step.</div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-q">Do I need to know JavaScript first? <span class="arrow">▼</span></button>
+                        <div class="accordion-a">A basic understanding of JavaScript helps, but jQuery's syntax is intentionally approachable. Many developers actually learn core programming concepts like selectors, events, and callbacks through jQuery before going deeper into vanilla JS.</div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-q">What's the difference between .hide() and .fadeOut()? <span class="arrow">▼</span></button>
+                        <div class="accordion-a">Both hide an element, but the experience differs. <code>.hide()</code> removes it instantly (or with a duration for a simple size collapse), while <code>.fadeOut()</code> gradually reduces the opacity before hiding it — much smoother for user interfaces.</div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-q">Can I use jQuery with modern CSS frameworks? <span class="arrow">▼</span></button>
+                        <div class="accordion-a">Yes. jQuery works alongside Tailwind, Bootstrap, Bulma, and any CSS framework. It handles DOM manipulation and events independently from how your styles are written.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <hr class="rule">
+
+        <!-- COMPARISON -->
+        <section id="compare" class="fade-section">
+            <p class="section-label">06 — Side By Side</p>
+            <h2>Vanilla JavaScript vs. jQuery</h2>
+            <p>The same tasks accomplished both ways — notice how jQuery consistently requires less code while remaining just as readable.</p>
+
+            <table class="compare-table">
+                <thead>
+                    <tr>
+                        <th>Task</th>
+                        <th>Vanilla JavaScript</th>
+                        <th>jQuery</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Select an element</td>
+                        <td><code>document.querySelector('#box')</code></td>
+                        <td><code>$('#box')</code></td>
+                    </tr>
+                    <tr>
+                        <td>Hide an element</td>
+                        <td><code>el.style.display = 'none'</code></td>
+                        <td><code>$('#box').hide()</code></td>
+                    </tr>
+                    <tr>
+                        <td>Click event listener</td>
+                        <td><code>el.addEventListener('click', fn)</code></td>
+                        <td><code>$('#box').click(fn)</code></td>
+                    </tr>
+                    <tr>
+                        <td>Add a CSS class</td>
+                        <td><code>el.classList.add('active')</code></td>
+                        <td><code>$('#box').addClass('active')</code></td>
+                    </tr>
+                    <tr>
+                        <td>Get input value</td>
+                        <td><code>document.querySelector('#inp').value</code></td>
+                        <td><code>$('#inp').val()</code></td>
+                    </tr>
+                    <tr>
+                        <td>Fade out with animation</td>
+                        <td>Requires CSS transition + class toggle</td>
+                        <td><code>$('#box').fadeOut(500)</code></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>WDD 226 &nbsp;·&nbsp; Week 11 &nbsp;·&nbsp; jQuery Instructional Page &nbsp;·&nbsp; <span>EM</span></p>
+    </footer>
+
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <script>
+        // ── Demo 1: Toggle ──────────────────────────────
+        // Hide the content initially, then toggle it on button click
+        $('#toggleContent').hide();
+
+        $('#toggleBtn').click(function() {
+            $('#toggleContent').toggle(400);
+        });
+
+        // ── Demo 2: Flash Message ───────────────────────
+        // Chain slideDown → delay → slideUp for a temporary notification
+        $('#flashTrigger').click(function() {
+            $('#flashMsg')
+                .slideDown(600)
+                .delay(2500)
+                .slideUp(600);
+        });
+
+        // ── Demo 3: Accordion ───────────────────────────
+        // Toggle the answer panel and rotate the arrow indicator
+        $('.accordion-q').click(function() {
+            $(this).toggleClass('open');
+            $(this).next('.accordion-a').slideToggle(300);
+        });
+
+        // ── Scroll Fade-In ──────────────────────────────
+        // Observe each .fade-section and add .visible when it enters the viewport
+        function checkFade() {
+            $('.fade-section').each(function() {
+                const top = $(this).offset().top;
+                const scrollBottom = $(window).scrollTop() + $(window).height();
+                if (scrollBottom > top + 60) {
+                    $(this).addClass('visible');
+                }
+            });
+        }
+
+        $(window).on('scroll', checkFade);
+        checkFade(); // run on load for sections already in view
+    </script>
+</body>
+</html>
