@@ -1,0 +1,8 @@
+<h1>AJAX</h1>
+<p>AJAX is not a programming language</p>
+<p>AJAX is a technique for accessing web servers from a webpage</p>
+<p>AJAX stands for asynchronous JavaScript and XML</p>
+<p>AJAX allows you to update parts of a webpage without reloading the entire page</p>
+<p>AJAX uses the XMLHttpRequest object to send and receive data from a server</p>
+<p>AJAX requests are asynchronous, meaning the browser does not freeze while waiting for a response</p>
+<p>Popular websites like Google Maps and Gmail rely heavily on AJAX for a smooth user experience</p>
