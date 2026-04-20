@@ -1,0 +1,67 @@
+/*
+    Week 13: Stopwatch Stylesheet
+    Author: Student
+    Date: April 20, 2026
+    Description: Styles for the JavaScript stopwatch page.
+*/
+
+/* Reset default padding and margin on all elements */
+* {
+    padding:    0;
+    margin:     0;
+    box-sizing: border-box;
+}
+
+/* Page-level styles: centered text, blue background, white text */
+html, body {
+    font-family: "Century Gothic";
+    background:  #5f8eed;
+    text-align:  center;
+    padding:     20px;
+    color:       #fff;
+}
+
+/* Circular wrapper that frames the timer and buttons */
+.wrapper {
+    border:        4px solid #111;
+    display:       block;
+    height:        220px;
+    width:         220px;
+    margin:        20px auto;
+    padding:       20px;
+    border-radius: 50%;
+    background:    rgba(17, 17, 17, 0.7);
+}
+
+/* Flex row that holds the three time segments */
+.timer {
+    display:    flex;
+    padding:    5px 2px;
+    margin:     20px 10px;
+    background: #202020;
+    color:      #fff;
+}
+
+/* Each time segment (h / m / s) takes equal space */
+.timer div {
+    flex:         1;
+    font-size:    18px;
+    padding:      5px 2px;
+    border-left:  1px solid #ddd;
+    border-right: 1px solid #ddd;
+}
+
+/* Control buttons */
+button {
+    border:      0;
+    font-size:   14px;
+    padding:     8px 10px;
+    background:  rgba(217, 217, 217, 0.6);
+    cursor:      pointer;
+    transition:  0.3s all linear;
+}
+
+/* Button hover: make background fully opaque */
+button:hover {
+    background: rgba(217, 217, 217, 1);
+}

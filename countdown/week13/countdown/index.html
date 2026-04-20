@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<!--
+    Week 13: Countdown Page
+    Author: Student
+    Date: April 20, 2026
+    Description: A countdown page where the user enters an event name and date,
+                 then sees how many days remain until (or since) that event.
+-->
+<html>
+<head>
+    <title>Countdown To...</title>
+    <!-- Link to countdown stylesheet -->
+    <link type="text/css" rel="stylesheet" href="css/countdown.css">
+    <!-- jQuery library (required for countdown.js) -->
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <!-- Countdown logic script -->
+    <script type="text/javascript" src="js/countdown.js"></script>
+</head>
+<body>
+    <main>
+        <h1>Countdown To...</h1>
+
+        <!-- Label and input for the event name -->
+        <label for="event">Event Name:</label>
+        <input type="text" name="event" id="event"><br>
+
+        <!-- Label and input for the event date (MM/DD/YYYY) -->
+        <label for="date">Event Date:</label>
+        <input type="text" name="date" id="date"><br>
+
+        <!-- Button that triggers the countdown calculation -->
+        <input type="button" name="countdown" id="countdown" value="Countdown!">
+
+        <!-- Output paragraph; displays the countdown message -->
+        <p id="message">&nbsp;</p>
+    </main>
+</body>
+</html>

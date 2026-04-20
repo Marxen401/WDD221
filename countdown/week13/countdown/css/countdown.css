@@ -1,0 +1,43 @@
+/*
+    Week 13: Countdown Stylesheet
+    Author: Student
+    Date: April 20, 2026
+    Description: Styles for the countdown event page.
+*/
+
+/* Page layout: centered, fixed width, blue border */
+body {
+    font-family:      Verdana, Arial, Helvetica, sans-serif;
+    font-size:        100%;
+    background-color: white;
+    width:            510px;
+    margin:           0 auto;
+    border:           3px solid blue;
+    padding:          0 2em 1em;
+}
+
+/* Page heading */
+h1 {
+    font-size:     150%;
+    color:         blue;
+    margin-bottom: .5em;
+}
+
+/* Float labels left so inputs align beside them */
+label {
+    float: left;
+    width: 8em;
+}
+
+/* Input field sizing and spacing */
+input {
+    width:         20em;
+    margin-left:   1em;
+    margin-bottom: 1em;
+}
+
+/* Result message displayed in bold red */
+#message {
+    font-weight: bold;
+    color:       red;
+}

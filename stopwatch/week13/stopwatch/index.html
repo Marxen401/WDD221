@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<!-- 
+    Week 13: JavaScript Stopwatch
+    Author: Student
+    Date: April 20, 2026
+    Description: A functioning stopwatch with start, pause, and stop buttons
+                 using JavaScript setTimeout and clearTimeout methods.
+-->
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <!-- Link to external stylesheet for stopwatch styling -->
+    <link rel="stylesheet" href="css/main.css">
+    <title>JavaScript Stop Watch</title>
+</head>
+
+<body>
+    <h1>Simple Javascript Timer</h1>
+
+    <!-- Wrapper contains the visual timer display and control buttons -->
+    <div class="wrapper">
+
+        <!-- Timer display: shows hours, minutes, and seconds -->
+        <div class="timer">
+            <div class="hour">
+                <p id="h">0 h</p>
+            </div>
+            <div class="minute">
+                <p id="m">0 m</p>
+            </div>
+            <div class="second">
+                <p id="s">0 s</p>
+            </div>
+        </div>
+
+        <!-- Control buttons for start, pause, and stop -->
+        <button id="start">Start</button>
+        <button id="pause">Pause</button>
+        <button id="stop">Stop</button>
+
+    </div>
+
+    <script>
+        /*
+         * Stopwatch Script
+         * Uses setTimeout() to tick every second and update the display.
+         * clearTimeout() is used to pause and stop the timer.
+         */
+
+        // --- Variable Declarations ---
+        // Select button elements by their IDs
+        var startbtn  = document.getElementById("start");
+        var stopbtn   = document.getElementById("stop");
+        var pausebtn  = document.getElementById("pause");
+
+        // Select display elements for hours, minutes, and seconds
+        var hour   = document.getElementById("h");
+        var minute = document.getElementById("m");
+        var second = document.getElementById("s");
+
+        // Counter variables to track elapsed time
+        var hrs = 0;
+        var mins = 0;
+        var secs = 0;
+
+        // Timer reference so we can cancel it with clearTimeout
+        var timerID;
+
+        // State flags — both start as false (not currently pressed)
+        var stopped = false;
+        var paused  = false;
+
+        // --- Event Listeners ---
+        // Each button click calls its corresponding function
+        startbtn.addEventListener("click", startTimer);
+        pausebtn.addEventListener("click", pauseTimer);
+        stopbtn.addEventListener("click",  stopTimer);
+
+        // --- Start Function ---
+        // Resets the paused/stopped flags and begins ticking
+        function startTimer() {
+            // Only start if not already running
+            paused  = false;
+            stopped = false;
+            // Clear any existing timer before starting a new one
+            clearTimeout(timerID);
+            tick();
+        }
+
+        // tick() increments seconds (and rolls over into minutes/hours)
+        // then schedules itself again after 1000ms using setTimeout
+        function tick() {
+            // If paused or stopped, do not continue scheduling
+            if (paused || stopped) return;
+
+            // Increment seconds; roll over to minutes at 60
+            secs++;
+            if (secs === 60) {
+                secs = 0;
+                mins++;
+            }
+
+            // Roll over minutes to hours at 60
+            if (mins === 60) {
+                mins = 0;
+                hrs++;
+            }
+
+            // Update the display elements
+            hour.innerHTML   = hrs  + " h";
+            minute.innerHTML = mins + " m";
+            second.innerHTML = secs + " s";
+
+            // Schedule the next tick in 1 second (1000 milliseconds)
+            timerID = setTimeout(tick, 1000);
+        }
+
+        // --- Pause Function ---
+        // Sets paused flag to true; tick() will stop rescheduling itself
+        function pauseTimer() {
+            paused = true;
+            clearTimeout(timerID);
+        }
+
+        // --- Stop Function ---
+        // Stops the timer and resets all counters back to zero
+        function stopTimer() {
+            stopped = true;
+            clearTimeout(timerID);
+
+            // Reset all time values
+            hrs  = 0;
+            mins = 0;
+            secs = 0;
+
+            // Reset the display
+            hour.innerHTML   = "0 h";
+            minute.innerHTML = "0 m";
+            second.innerHTML = "0 s";
+        }
+    </script>
+
+</body>
+</html>
