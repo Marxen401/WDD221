@@ -1,6 +1,6 @@
 /*
     Week 13: Countdown JavaScript
-    Author: Student
+    Author: Ethan Marxen
     Date: April 20, 2026
     Description: Uses jQuery to handle the countdown button click.
                  Reads user-entered event name and date, validates the input,
