@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700');
+
+* 
+{
+  border-sizing: border-box;
+}
+
+html, body 
+{
+  height: 100%;
+  width: 100%;
+  padding: 70px;
+  margin: 0;
+  font-family: roboto;
+  background-color: rgb(192, 197, 205)
+}
+
+h6 
+{
+  letter-spacing: 1.1px;
+  font-weight: normal;
+}
+
+list-group-item 
+{
+  display: list-item;
+}
+
+.cross 
+{
+  text-decoration: line-through;
+  background-color: #E0FCFF;
+}
