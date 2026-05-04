@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+ <!-- Ethan Marxen 05/04/2026-->
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>GRID // NUMBER PROTOCOL</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <!-- Animated background grid canvas -->
+  <canvas id="grid-canvas"></canvas>
+
+  <!-- Win overlay -->
+  <div id="win-overlay" class="hidden">
+    <div id="win-panel">
+      <div id="win-glitch" data-text="ACCESS GRANTED">ACCESS GRANTED</div>
+      <div id="win-sub">IDENTITY VERIFIED</div>
+      <div id="win-stats-line"></div>
+      <button id="win-play-again">[ REINITIALIZE ]</button>
+    </div>
+  </div>
+
+  <!-- Main UI -->
+  <div id="app">
+
+    <!-- Header -->
+    <header id="top-bar">
+      <div id="header-left">
+        <span class="header-tag">// ENCOM GRID</span>
+        <h1 id="main-title">NUMBER<br><span>PROTOCOL</span></h1>
+      </div>
+      <div id="header-right">
+        <div class="sys-stat">
+          <span class="ss-label">SYSTEM</span>
+          <span class="ss-val online">ONLINE</span>
+        </div>
+        <div class="sys-stat">
+          <span class="ss-label">DIFFICULTY</span>
+          <span class="ss-val" id="diff-display">NORMAL</span>
+        </div>
+        <div class="sys-stat">
+          <span class="ss-label">SESSION</span>
+          <span class="ss-val" id="session-counter">000</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Body -->
+    <main id="main-grid">
+
+      <!-- ── LEFT PANEL: Game ── -->
+      <section id="game-panel">
+
+        <!-- Difficulty selector -->
+        <div id="diff-bar">
+          <span class="diff-label">SELECT DIFFICULTY:</span>
+          <div id="diff-buttons">
+            <button class="diff-btn" data-range="50"  data-label="EASY">EASY<br><small>1 – 50</small></button>
+            <button class="diff-btn active" data-range="100" data-label="NORMAL">NORMAL<br><small>1 – 100</small></button>
+            <button class="diff-btn" data-range="500" data-label="HARD">HARD<br><small>1 – 500</small></button>
+            <button class="diff-btn" data-range="1000" data-label="NIGHTMARE">NIGHTMARE<br><small>1 – 1000</small></button>
+          </div>
+        </div>
+
+        <!-- Range display -->
+        <div id="range-bar">
+          <span id="range-low">1</span>
+          <div id="range-track">
+            <div id="range-fill"></div>
+            <div id="range-indicator"></div>
+          </div>
+          <span id="range-high">100</span>
+        </div>
+
+        <!-- Feedback display -->
+        <div id="feedback-panel">
+          <div id="feedback-icon">?</div>
+          <div id="feedback-text">AWAITING INPUT</div>
+          <div id="feedback-sub">ENTER YOUR FIRST GUESS TO BEGIN</div>
+        </div>
+
+        <!-- Input row -->
+        <div id="input-row">
+          <div id="input-wrapper">
+            <span id="input-cursor">&gt;_</span>
+            <input
+              type="number"
+              id="guess-input"
+              placeholder="0"
+              min="1"
+              max="100"
+              autocomplete="off"
+            >
+          </div>
+          <button id="guess-btn">TRANSMIT</button>
+        </div>
+
+        <!-- Guess log -->
+        <div id="log-panel">
+          <div id="log-header">
+            <span>// ATTEMPT LOG</span>
+            <span id="guess-counter">GUESSES: <strong>0</strong></span>
+          </div>
+          <div id="log-entries"></div>
+        </div>
+
+      </section>
+
+      <!-- ── RIGHT PANEL: Scoreboard ── -->
+      <section id="score-panel">
+        <div id="score-header">
+          <span class="panel-tag">// SCOREBOARD</span>
+          <span id="score-clear-btn">[ CLEAR ]</span>
+        </div>
+
+        <table id="score-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>OPERATIVE</th>
+              <th>GUESSES</th>
+              <th>TIME</th>
+              <th>DIFF</th>
+              <th>RANK</th>
+            </tr>
+          </thead>
+          <tbody id="score-body">
+            <tr id="score-empty-row">
+              <td colspan="6" id="score-empty">NO RECORDS FOUND</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer id="bottom-bar">
+      <span>// END-TO-END ENCRYPTED · GRID SECURITY LEVEL 7 · UNAUTHORIZED ACCESS WILL BE PROSECUTED</span>
+    </footer>
+
+  </div>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
