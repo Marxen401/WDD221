@@ -22,136 +22,137 @@ const PAIRS_TO_PLAY = 6; // ← CHANGE ME
 //
 //  TO ADD AN IMAGE:
 //    1. Drop the file into the /images/ folder
-//    2. Set "img" to the exact filename
-//    3. Done. Symbol emoji is the fallback if
+//       ** FILE MUST BE ALL LOWERCASE **
+//       e.g. rename IMG_4639.PNG → img_4639.png
+//    2. Set "img" to the lowercase filename
+//    3. Done. The ◈ symbol is the fallback if
 //       the file is missing or still null.
 //
 //  TO ADD A NEW CHARACTER:
-//    Copy any block below, paste it at the end
-//    of the array (before the closing ]), and
-//    fill in the fields.
+//    Copy any block below, paste it before the
+//    closing ]; and fill in the fields.
 // =============================================
 
 const CARD_POOL = [
   {
-    name:   'Star Singer',
-    alias:  'Matt Marxen',
-    role:   'Hero',
-    color:  '#00f5ff',
-    power:  'Vocal Manipulation · Precognition · Frost Manipulation ',
-    img:    'IMG_4639.PNG'
+    name:  'Star Singer',
+    alias: 'Matt Marxen',
+    role:  'Hero',
+    color: '#00f5ff',
+    power: 'Vocal Manipulation · Precognition · Frost Manipulation',
+    img:   'img_4639.png'
   },
   {
-    name:   'Scarlet Sentry',
-    alias:  'Nishihara Norio',
-    role:   'Hero',
-    color:  '#e84040',
-    power:  'Enhanced Senses · Martial Arts',
-    img:    'IMG_6311.PNG'
+    name:  'Scarlet Sentry',
+    alias: 'Nishihara Norio',
+    role:  'Hero',
+    color: '#e84040',
+    power: 'Enhanced Senses · Martial Arts',
+    img:   'img_6311.png'
   },
   {
-    name:   'Quiverkill',
-    alias:  'Archer Bowman',
-    role:   'Hero',
-    color:  '#ffa500',
-    power:  'Master Archer · Slow Aging',
-    img:    'IMG_5428.PNG'
+    name:  'Quiverkill',
+    alias: 'Archer Bowman',
+    role:  'Hero',
+    color: '#ffa500',
+    power: 'Master Archer · Slow Aging',
+    img:   'img_5428.png'
   },
   {
-    name:   'Morningstar',
-    alias:  'Mia Maria',
-    role:   'Hero',
-    color:  '#ffd700',
-    power:  'Angelic Powers · CEO of H.E.A.V.E.N.',
-    img:    'IMG_8229.PNG'
+    name:  'Morningstar',
+    alias: 'Mia Maria',
+    role:  'Hero',
+    color: '#ffd700',
+    power: 'Angelic Powers · CEO of H.E.A.V.E.N.',
+    img:   'img_8229.png'
   },
   {
-    name:   'Scarlet Shade',
-    alias:  'Riku Rodriguez',
-    role:   'Anti-Hero',
-    color:  '#9b30ff',
-    power:  'None',
-    img:    'IMG_8239.PNG'
+    name:  'Scarlet Shade',
+    alias: 'Riku Rodriguez',
+    role:  'Anti-Hero',
+    color: '#9b30ff',
+    power: 'None',
+    img:   'img_8239.png'
   },
   {
-    name:   'Invis',
-    alias:  '[REDACTED]',
-    role:   'Hero',
-    color:  '#a0e0ff',
-    power:  'Full Invisibility · Stealth Ops',
-    img:    'IMG_5488.PNG'
+    name:  'Invis',
+    alias: '[REDACTED]',
+    role:  'Hero',
+    color: '#a0e0ff',
+    power: 'Full Invisibility · Stealth Ops',
+    img:   'img_5488.png'
   },
   {
-    name:   'Ruby Fist',
-    alias:  '[REDACTED]',
-    role:   'Hero',
-    color:  '#e8003c',
-    power:  'Enhanced Strength · Combat',
-    img:    'IMG_6021.PNG'
+    name:  'Ruby Fist',
+    alias: '[REDACTED]',
+    role:  'Hero',
+    color: '#e8003c',
+    power: 'Enhanced Strength · Combat',
+    img:   'img_6021.png'
   },
   {
-    name:   'Bronze Bacto',
-    alias:  'Johnny Westwood',
-    role:   'Hero',
-    color:  '#3a6fff',
-    power:  'Immortality',
-    img:    'FDDEF857-CFA3-4288-9892-0EE30E29D083.JPG'
+    name:  'Bronze Bacto',
+    alias: 'Johnny Westwood',
+    role:  'Hero',
+    color: '#3a6fff',
+    power: 'Immortality',
+    img:   'fddef857-cfa3-4288-9892-0ee30e29d083.jpg'
   },
   {
-    name:   'Bartender',
-    alias:  '[REDACTED]',
-    role:   'Hero',
-    color:  '#00ff99',
-    power:  'Tactical Genius · Gadgeteer',
-    img:    'IMG_5495.PNG'
+    name:  'Bartender',
+    alias: '[REDACTED]',
+    role:  'Hero',
+    color: '#00ff99',
+    power: 'Tactical Genius · Gadgeteer',
+    img:   'img_5495.png'
   },
   {
-    name:   'Detective Skull',
-    alias:  '[REDACTED]',
-    role:   'Anti-Hero',
-    color:  '#cc99ff',
-    power:  'Noir Detective · Queens Division',
-    img:    'IMG_6559.PNG'
+    name:  'Detective Skull',
+    alias: '[REDACTED]',
+    role:  'Anti-Hero',
+    color: '#cc99ff',
+    power: 'Noir Detective · Queens Division',
+    img:   'img_6559.png'
   },
   {
-    name:   'Golden Gal',
-    alias:  'Ms. Anderson',
-    role:   'Hero',
-    color:  '#ff2d78',
-    power:  'Pecotech Suit',
-    img:    'IMG_7538.PNG'
+    name:  'Golden Gal',
+    alias: 'Ms. Anderson',
+    role:  'Hero',
+    color: '#ff2d78',
+    power: 'Pecotech Suit',
+    img:   'img_7538.png'
   },
   {
-    name:   'Flannel Man',
-    alias:  '[CLASSIFIED]',
-    role:   'Anti-Hero',
-    color:  '#d4a017',
-    power:  'Absurdist Force',
-    img:    'IMG_6549.PNG'
+    name:  'Flannel Man',
+    alias: '[CLASSIFIED]',
+    role:  'Anti-Hero',
+    color: '#d4a017',
+    power: 'Absurdist Force',
+    img:   'img_6549.png'
   },
   {
-    name:   'Silk Sword',
-    alias:  '[CLASSIFIED]',
-    role:   'Hero',
-    color:  '#7fffd4',
-    power:  'Spider Powers, Sword of the Frozen Damned',
-    img:    'IMG_9215.PNG'
+    name:  'Silk Sword',
+    alias: '[CLASSIFIED]',
+    role:  'Hero',
+    color: '#7fffd4',
+    power: 'Spider Powers · Sword of the Frozen Damned',
+    img:   'img_9215.png'
   },
   {
-    name:   'Burden',
-    alias:  '[CLASSIFIED]',
-    role:   'Hero',
-    color:  '#ff6600',
-    power:  'Energy Absorber',
-    img:    'IMG_8249.PNG'
+    name:  'Burden',
+    alias: '[CLASSIFIED]',
+    role:  'Hero',
+    color: '#ff6600',
+    power: 'Energy Absorber',
+    img:   'img_8249.png'
   },
   {
-    name:   'Ringer',
-    alias:  '[CLASSIFIED]',
-    role:   'Hero',
-    color:  '#00e5ff',
-    power:  'Magic',
-    img:    'IMG_6022.PNG'
+    name:  'Ringer',
+    alias: '[CLASSIFIED]',
+    role:  'Hero',
+    color: '#00e5ff',
+    power: 'Magic',
+    img:   'img_6022.png'
   }
 ];
 
@@ -235,24 +236,29 @@ function updateStats() {
 // =============================================
 //  BUILD CARD
 //
-//  If data.img is set, the <img> tag is used.
-//  The onerror handler hides the broken image
-//  and shows the symbol fallback automatically.
+//  img filename is always lowercased here.
+//  Linux servers (GitHub Pages / Vercel) are
+//  case-sensitive — IMG_1234.PNG and img_1234.png
+//  are treated as different files. Lowercase
+//  everything and rename your actual files to
+//  match (see the pool entries above).
 // =============================================
 
 function buildCard(data) {
   const roleColor = ROLE_COLORS[data.role] || '#00f5ff';
 
-  const portraitHTML = data.img
+  const imgSrc = data.img ? data.img.toLowerCase() : null;
+
+  const portraitHTML = imgSrc
     ? `<div class="card-portrait">
          <img
-           src="images/${data.img}"
+           src="images/${imgSrc}"
            alt="${data.name}"
            onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
          >
-         <div class="card-symbol-fallback" style="color:${data.color};">${data.symbol}</div>
+         <div class="card-symbol-fallback" style="color:${data.color};">◈</div>
        </div>`
-    : `<div class="card-symbol" style="color:${data.color};">${data.symbol}</div>`;
+    : `<div class="card-symbol" style="color:${data.color};">◈</div>`;
 
   const card = document.createElement('div');
   card.className    = 'card';
@@ -347,10 +353,10 @@ function showWinScreen() {
   clearInterval(timerInterval);
   const perfect = totalPairs;
   let rating;
-  if      (moves <= perfect + 2)          rating = '⬡ ⬡ ⬡  PERFECT';
-  else if (moves <= perfect * 2)          rating = '⬡ ⬡  EXCELLENT';
-  else if (moves <= perfect * 2 + 4)      rating = '⬡  OPERATIVE';
-  else                                    rating = '◌  FIELD AGENT';
+  if      (moves <= perfect + 2)     rating = '⬡ ⬡ ⬡  PERFECT';
+  else if (moves <= perfect * 2)     rating = '⬡ ⬡  EXCELLENT';
+  else if (moves <= perfect * 2 + 4) rating = '⬡  OPERATIVE';
+  else                               rating = '◌  FIELD AGENT';
 
   const overlay = document.createElement('div');
   overlay.id = 'win-overlay';
@@ -381,10 +387,10 @@ function buildGameUI() {
   const gameDiv = document.getElementById('game');
   gameDiv.innerHTML = '';
 
-  totalPairs    = Math.min(Math.max(PAIRS_TO_PLAY, 2), CARD_POOL.length);
-  firstCard     = null;  secondCard  = null;
-  lockBoard     = false; timerStarted = false;
-  seconds       = 0;    moves        = 0;    matches = 0;
+  totalPairs   = Math.min(Math.max(PAIRS_TO_PLAY, 2), CARD_POOL.length);
+  firstCard    = null;  secondCard   = null;
+  lockBoard    = false; timerStarted = false;
+  seconds      = 0;    moves        = 0;    matches = 0;
   clearInterval(timerInterval); timerInterval = null;
 
   const header = document.createElement('div');
