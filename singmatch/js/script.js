@@ -39,7 +39,7 @@ const CARD_POOL = [
     role:   'Hero',
     color:  '#00f5ff',
     power:  'Vocal Manipulation · Precognition · Frost Manipulation ',
-    img:    'IMG_4639.png'
+    img:    'IMG_4639.PNG'
   },
   {
     name:   'Scarlet Sentry',
@@ -47,7 +47,7 @@ const CARD_POOL = [
     role:   'Hero',
     color:  '#e84040',
     power:  'Enhanced Senses · Martial Arts',
-    img:    'IMG_6311.png'
+    img:    'IMG_6311.PNG'
   },
   {
     name:   'Quiverkill',
@@ -55,7 +55,7 @@ const CARD_POOL = [
     role:   'Hero',
     color:  '#ffa500',
     power:  'Master Archer · Slow Aging',
-    img:    'IMG_5428.png'
+    img:    'IMG_5428.PNG'
   },
   {
     name:   'Morningstar',
@@ -63,7 +63,7 @@ const CARD_POOL = [
     role:   'Hero',
     color:  '#ffd700',
     power:  'Angelic Powers · CEO of H.E.A.V.E.N.',
-    img:    'IMG_8229.png'
+    img:    'IMG_8229.PNG'
   },
   {
     name:   'Scarlet Shade',
@@ -71,7 +71,7 @@ const CARD_POOL = [
     role:   'Anti-Hero',
     color:  '#9b30ff',
     power:  'None',
-    img:    'IMG_8239.png'
+    img:    'IMG_8239.PNG'
   },
   {
     name:   'Invis',
@@ -79,7 +79,7 @@ const CARD_POOL = [
     role:   'Hero',
     color:  '#a0e0ff',
     power:  'Full Invisibility · Stealth Ops',
-    img:    'IMG_5488.png'
+    img:    'IMG_5488.PNG'
   },
   {
     name:   'Ruby Fist',
@@ -87,7 +87,7 @@ const CARD_POOL = [
     role:   'Hero',
     color:  '#e8003c',
     power:  'Enhanced Strength · Combat',
-    img:    'IMG_6021.png'
+    img:    'IMG_6021.PNG'
   },
   {
     name:   'Bronze Bacto',
@@ -95,7 +95,7 @@ const CARD_POOL = [
     role:   'Hero',
     color:  '#3a6fff',
     power:  'Immortality',
-    img:    'FDDEF857-CFA3-4288-9892-0EE30E29D083.jpg'
+    img:    'FDDEF857-CFA3-4288-9892-0EE30E29D083.JPG'
   },
   {
     name:   'Bartender',
@@ -103,7 +103,7 @@ const CARD_POOL = [
     role:   'Hero',
     color:  '#00ff99',
     power:  'Tactical Genius · Gadgeteer',
-    img:    'IMG_5495.png'
+    img:    'IMG_5495.PNG'
   },
   {
     name:   'Detective Skull',
@@ -111,7 +111,7 @@ const CARD_POOL = [
     role:   'Anti-Hero',
     color:  '#cc99ff',
     power:  'Noir Detective · Queens Division',
-    img:    'IMG_6559.png'
+    img:    'IMG_6559.PNG'
   },
   {
     name:   'Golden Gal',
@@ -119,7 +119,7 @@ const CARD_POOL = [
     role:   'Hero',
     color:  '#ff2d78',
     power:  'Pecotech Suit',
-    img:    'IMG_7538.png'
+    img:    'IMG_7538.PNG'
   },
   {
     name:   'Flannel Man',
@@ -127,7 +127,7 @@ const CARD_POOL = [
     role:   'Anti-Hero',
     color:  '#d4a017',
     power:  'Absurdist Force',
-    img:    'IMG_6549.png'
+    img:    'IMG_6549.PNG'
   },
   {
     name:   'Silk Sword',
@@ -135,7 +135,7 @@ const CARD_POOL = [
     role:   'Hero',
     color:  '#7fffd4',
     power:  'Spider Powers, Sword of the Frozen Damned',
-    img:    'IMG_9215.png'
+    img:    'IMG_9215.PNG'
   },
   {
     name:   'Burden',
@@ -143,7 +143,7 @@ const CARD_POOL = [
     role:   'Hero',
     color:  '#ff6600',
     power:  'Energy Absorber',
-    img:    'IMG_8249.png'
+    img:    'IMG_8249.PNG'
   },
   {
     name:   'Ringer',
@@ -151,7 +151,7 @@ const CARD_POOL = [
     role:   'Hero',
     color:  '#00e5ff',
     power:  'Magic',
-    img:    'IMG_6022.png'
+    img:    'IMG_6022.PNG'
   }
 ];
 
